@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   DeviceSettings,
   VideoPreview,
@@ -15,6 +15,8 @@ const MeetingSetup = ({
 }: {
   setIsSetupComplete: (value: boolean) => void;
 }) => {
+  const [isMediaReady, setIsMediaReady] = useState(false); // State to track media readiness
+
   // https://getstream.io/video/docs/react/guides/call-and-participant-state/#call-state
   const { useCallEndedAt, useCallStartsAt } = useCallStateHooks();
   const callStartsAt = useCallStartsAt();
@@ -36,23 +38,32 @@ const MeetingSetup = ({
 
   useEffect(() => {
     const initializeDevices = async () => {
+      if (!call) return; // Ensure call exists
+
       try {
         if (isMicCamToggled) {
           await call.camera?.disable();
           await call.microphone?.disable();
         } else {
+          // Attempt to enable devices
           await call.camera?.enable();
           await call.microphone?.enable();
         }
+        // Set media ready only after attempting to enable/disable
+        setIsMediaReady(true);
       } catch (error) {
-        console.error("Failed to initialize devices:", error);
+        console.error('Failed to initialize devices:', error);
+        // Optionally handle the error, maybe show a message to the user
+        // Still set ready to true to allow UI to proceed, VideoPreview might handle internal errors
+        setIsMediaReady(true);
       }
     };
 
-    if (call.camera && call.microphone) {
-      initializeDevices();
-    }
-  }, [isMicCamToggled, call.camera, call.microphone]);
+    // Initialize devices when the component mounts or dependencies change
+    initializeDevices();
+
+    // Dependency array ensures this runs when call, camera, microphone, or toggle state changes
+  }, [call, call?.camera, call?.microphone, isMicCamToggled]);
 
   if (callTimeNotArrived)
     return (
@@ -72,8 +83,8 @@ const MeetingSetup = ({
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center gap-3 text-white">
       <h1 className="text-center text-2xl font-bold">Setup</h1>
-      {/* Conditionally render VideoPreview only when call is available */}
-      {call && <VideoPreview />}4
+      {/* Conditionally render VideoPreview only when media is ready */}
+      {isMediaReady ? <VideoPreview /> : <div>Loading Preview...</div>} {/* Show loading or placeholder */}
       <div className="flex h-16 items-center justify-center gap-3">
         <label className="flex items-center justify-center gap-2 font-medium">
           <input
