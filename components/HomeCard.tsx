@@ -32,6 +32,7 @@ const HomeCard = ({
         className // Allow overriding/adding classes
       )}
       onClick={handleClick}
+      data-testid={title}
     >
       {/* Icon container: Use iconBgColor prop, ensure centering */}
       <div className={cn("flex-center size-12 rounded-[10px]", iconBgColor)}>

@@ -1,40 +1,40 @@
 import MeetingTypeList from "@/components/MeetingTypeList";
-import { Calendar, Clock, Link, LogIn, Play, Plus, Video } from "lucide-react";
+// import { Calendar, Clock, Link, LogIn, Play, Plus, Video } from "lucide-react";
 
-const actionCards = [
-  {
-    icon: <Plus size={40} />,
-    title: "New Meeting",
-    description: "Start an instant meeting",
-    buttonText: "Start Instant",
-    buttonIcon: <Plus />,
-    className: "text-cyan-400 shadow-cyan-400/60",
-  },
-  {
-    icon: <LogIn size={40} />,
-    title: "Join Meeting",
-    description: "Via invitation link or ID",
-    buttonText: "Join Now",
-    buttonIcon: <Link />,
-    className: "text-pink-400 shadow-pink-400/60",
-  },
-  {
-    icon: <Calendar size={40} />,
-    title: "Schedule Meeting",
-    description: "Plan your meeting ahead",
-    buttonText: "Schedule",
-    buttonIcon: <Clock />,
-    className: "text-yellow-300 shadow-yellow-300/60",
-  },
-  {
-    icon: <Video size={40} />,
-    title: "View Recordings",
-    description: "Access past meeting recordings",
-    buttonText: "View Now",
-    buttonIcon: <Play />,
-    className: "text-green-400 shadow-green-400/60",
-  },
-];
+// const actionCards = [
+//   {
+//     icon: <Plus size={40} />,
+//     title: "New Meeting",
+//     description: "Start an instant meeting",
+//     buttonText: "Start Instant",
+//     buttonIcon: <Plus />,
+//     className: "text-cyan-400 shadow-cyan-400/60",
+//   },
+//   {
+//     icon: <LogIn size={40} />,
+//     title: "Join Meeting",
+//     description: "Via invitation link or ID",
+//     buttonText: "Join Now",
+//     buttonIcon: <Link />,
+//     className: "text-pink-400 shadow-pink-400/60",
+//   },
+//   {
+//     icon: <Calendar size={40} />,
+//     title: "Schedule Meeting",
+//     description: "Plan your meeting ahead",
+//     buttonText: "Schedule",
+//     buttonIcon: <Clock />,
+//     className: "text-yellow-300 shadow-yellow-300/60",
+//   },
+//   {
+//     icon: <Video size={40} />,
+//     title: "View Recordings",
+//     description: "Access past meeting recordings",
+//     buttonText: "View Now",
+//     buttonIcon: <Play />,
+//     className: "text-green-400 shadow-green-400/60",
+//   },
+// ];
 
 const Home = () => {
   const now = new Date();

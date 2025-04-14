@@ -27,9 +27,9 @@ const MeetingModal = ({
   children,
   handleClick,
   buttonText,
-  instantMeeting,
+  // instantMeeting,
   image,
-  buttonClassName,
+  // buttonClassName,
   buttonIcon,
 }: MeetingModalProps) => {
   return (

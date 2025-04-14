@@ -1,13 +1,7 @@
-import { Metadata } from "next";
 import { ReactNode } from "react";
 
 import Navbar from "@/components/Navbar";
 import BackgroundGradients from "./BackgroundGradients";
-
-export const metadata: Metadata = {
-  title: "Interflow",
-  description: "Advanced video conferencing application.",
-};
 
 const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (

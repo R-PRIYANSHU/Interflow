@@ -12,8 +12,8 @@ import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "YOOM",
-  description: "Video calling App",
+  title: "Interflow",
+  description: "Advanced video conferencing application.",
   icons: {
     icon: "/icons/logo.svg",
   },

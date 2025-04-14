@@ -7,7 +7,7 @@ import MobileNav from "./MobileNav";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation"; // Import usePathname
 import { sidebarLinks } from "@/constants"; // Import sidebarLinks
-import { cn } from "@/lib/utils"; // Import cn for conditional classes
+// import { cn } from "@/lib/utils"; // Import cn for conditional classes
 
 const Navbar = () => {
   const pathname = usePathname(); // Get current path

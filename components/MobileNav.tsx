@@ -1,12 +1,17 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { sidebarLinks } from '@/constants';
-import { cn } from '@/lib/utils';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { sidebarLinks } from "@/constants";
+import { cn } from "@/lib/utils";
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -29,9 +34,9 @@ const MobileNav = () => {
               src="/icons/logo.svg"
               width={32}
               height={32}
-              alt="yoom logo"
+              alt="interflow logo"
             />
-            <p className="text-[26px] font-extrabold text-white">YOOM</p>
+            <p className="text-[26px] font-extrabold text-white">Interflow</p>
           </Link>
           <div className="flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto">
             <SheetClose asChild>
@@ -45,9 +50,9 @@ const MobileNav = () => {
                         href={item.route}
                         key={item.label}
                         className={cn(
-                          'flex gap-4 items-center p-4 rounded-lg w-full max-w-60',
+                          "flex gap-4 items-center p-4 rounded-lg w-full max-w-60",
                           {
-                            'bg-blue-1': isActive,
+                            "bg-blue-1": isActive,
                           }
                         )}
                       >

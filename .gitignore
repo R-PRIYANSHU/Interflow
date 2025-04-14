@@ -47,3 +47,11 @@ next-env.d.ts
 test.html
 test.css
 test.js
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+\nplaywright/.clerk
