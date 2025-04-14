@@ -29,7 +29,8 @@ command -v ip >/dev/null 2>&1 || { echo >&2 "⚠️ Warning: 'ip' command not fo
 command -v ls >/dev/null 2>&1 || { echo >&2 "❌ Error: 'ls' command not found (this is extremely unusual). Aborting."; exit 1; }
 command -v head >/dev/null 2>&1 || { echo >&2 "❌ Error: 'head' command not found (this is extremely unusual). Aborting."; exit 1; }
 command -v grep >/dev/null 2>&1 || { echo >&2 "❌ Error: 'grep' command not found (this is extremely unusual). Aborting."; exit 1; }
-
+command -v git >/dev/null 2>&1 || { echo >&2 "❌ Error: 'git' command not found (this is extremely unusual). Aborting."; exit 1; }
+git pull
 
 echo "✅ Dependencies checked."
 
@@ -168,6 +169,10 @@ fi
 
 echo "✅ $PACKAGE_JSON updated successfully."
 
+# --- Install Dependencies ---
+echo "🚀 Installing dependencies..."
+npm install
+
 # --- Final Instructions ---
 echo ""
 echo "--- 🎉 Setup Complete! ---"
@@ -192,5 +197,7 @@ echo ""
 echo "ℹ️ Note: Your browser might show a security warning initially for the self-signed certificate."
 echo "   This is expected. You should accept the risk or add an exception for development."
 echo "-----------------------------------------"
+
+echo "✅ All done! You can now start developing with inteflow."
 
 exit 0
