@@ -37,8 +37,8 @@ const MeetingCard = ({
     <section className="flex min-h-[258px] w-full flex-col justify-between rounded-[14px] bg-dark-1 px-5 py-8 xl:max-w-[568px]">
       <article className="flex flex-col gap-5">
         <div className="flex justify-between">
-        <Image src={icon} alt="upcoming" width={28} height={28} />
-        { isOngoing && <Badge className="bg-green-800">Ongoing</Badge> }
+          <Image src={icon} alt="upcoming" width={28} height={28} />
+          {isOngoing && <Badge className="bg-green-800">Ongoing</Badge>}
         </div>
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">

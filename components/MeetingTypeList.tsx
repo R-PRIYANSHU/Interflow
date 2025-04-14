@@ -1,29 +1,29 @@
 /* eslint-disable camelcase */
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-import HomeCard from './HomeCard';
-import MeetingModal from './MeetingModal';
-import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk';
-import { useUser } from '@clerk/nextjs';
-import Loader from './Loader';
-import { Textarea } from './ui/text-area';
-import ReactDatePicker from 'react-datepicker';
-import { toast } from 'sonner'; // Import sonner toast
-import { Input } from './ui/input';
+import HomeCard from "./HomeCard";
+import MeetingModal from "./MeetingModal";
+import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
+import { useUser } from "@clerk/nextjs";
+import Loader from "./Loader";
+import { Textarea } from "./ui/text-area";
+import ReactDatePicker from "react-datepicker";
+import { toast } from "sonner"; // Import sonner toast
+import { Input } from "./ui/input";
 
 const initialValues = {
   dateTime: new Date(),
-  description: '',
-  link: '',
+  description: "",
+  link: "",
 };
 
 const MeetingTypeList = () => {
   const router = useRouter();
   const [meetingState, setMeetingState] = useState<
-    'isScheduleMeeting' | 'isJoiningMeeting' | 'isInstantMeeting' | undefined
+    "isScheduleMeeting" | "isJoiningMeeting" | "isInstantMeeting" | undefined
   >(undefined);
   const [values, setValues] = useState(initialValues);
   const [callDetail, setCallDetail] = useState<Call>();
@@ -35,15 +35,15 @@ const MeetingTypeList = () => {
     if (!client || !user) return;
     try {
       if (!values.dateTime) {
-        toast.error('Please select a date and time'); // Use sonner API
+        toast.error("Please select a date and time"); // Use sonner API
         return;
       }
       const id = crypto.randomUUID();
-      const call = client.call('default', id);
-      if (!call) throw new Error('Failed to create meeting');
+      const call = client.call("default", id);
+      if (!call) throw new Error("Failed to create meeting");
       const startsAt =
         values.dateTime.toISOString() || new Date(Date.now()).toISOString();
-      const description = values.description || 'Instant Meeting';
+      const description = values.description || "Instant Meeting";
       await call.getOrCreate({
         data: {
           starts_at: startsAt,
@@ -56,10 +56,10 @@ const MeetingTypeList = () => {
       if (!values.description) {
         router.push(`/meeting/${call.id}`);
       }
-      toast.success('Meeting Created'); // Use sonner API
+      toast.success("Meeting Created");
     } catch (error) {
       console.error(error);
-      toast.error('Failed to create Meeting'); // Use sonner API
+      toast.error("Failed to create Meeting");
     }
   };
 
@@ -73,33 +73,33 @@ const MeetingTypeList = () => {
         img="/icons/add-meeting.svg"
         title="New Meeting"
         description="Start an instant meeting"
-        handleClick={() => setMeetingState('isInstantMeeting')}
+        handleClick={() => setMeetingState("isInstantMeeting")}
       />
       <HomeCard
         img="/icons/join-meeting.svg"
         title="Join Meeting"
         description="via invitation link"
         className="bg-blue-1"
-        handleClick={() => setMeetingState('isJoiningMeeting')}
+        handleClick={() => setMeetingState("isJoiningMeeting")}
       />
       <HomeCard
         img="/icons/schedule.svg"
         title="Schedule Meeting"
         description="Plan your meeting"
         className="bg-purple-1"
-        handleClick={() => setMeetingState('isScheduleMeeting')}
+        handleClick={() => setMeetingState("isScheduleMeeting")}
       />
       <HomeCard
         img="/icons/recordings.svg"
         title="View Recordings"
         description="Meeting Recordings"
         className="bg-yellow-1"
-        handleClick={() => router.push('/recordings')}
+        handleClick={() => router.push("/recordings")}
       />
 
       {!callDetail ? (
         <MeetingModal
-          isOpen={meetingState === 'isScheduleMeeting'}
+          isOpen={meetingState === "isScheduleMeeting"}
           onClose={() => setMeetingState(undefined)}
           title="Create Meeting"
           handleClick={createMeeting}
@@ -133,14 +133,14 @@ const MeetingTypeList = () => {
         </MeetingModal>
       ) : (
         <MeetingModal
-          isOpen={meetingState === 'isScheduleMeeting'}
+          isOpen={meetingState === "isScheduleMeeting"}
           onClose={() => setMeetingState(undefined)}
           title="Meeting Created"
           handleClick={() => {
             navigator.clipboard.writeText(meetingLink);
-            toast.success('Link Copied'); // Use sonner API
+            toast.success("Link Copied"); // Use sonner API
           }}
-          image={'/icons/checked.svg'}
+          image={"/icons/checked.svg"}
           buttonIcon="/icons/copy.svg"
           className="text-center"
           buttonText="Copy Meeting Link"
@@ -148,7 +148,7 @@ const MeetingTypeList = () => {
       )}
 
       <MeetingModal
-        isOpen={meetingState === 'isJoiningMeeting'}
+        isOpen={meetingState === "isJoiningMeeting"}
         onClose={() => setMeetingState(undefined)}
         title="Type the link here"
         className="text-center"
@@ -163,7 +163,7 @@ const MeetingTypeList = () => {
       </MeetingModal>
 
       <MeetingModal
-        isOpen={meetingState === 'isInstantMeeting'}
+        isOpen={meetingState === "isInstantMeeting"}
         onClose={() => setMeetingState(undefined)}
         title="Start an Instant Meeting"
         className="text-center"
