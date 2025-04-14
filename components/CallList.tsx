@@ -63,12 +63,19 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const calls = getCalls();
   const noCallsMessage = getNoCallsMessage();
 
+  const isCallOngoing = (meeting: Call): boolean => {
+    if (!(meeting?.state?.startsAt)) 
+      return false;
+    return meeting.state.startsAt < new Date() && !meeting.state.endedAt;
+  };
+
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       {calls && calls.length > 0 ? (
-        calls.map((meeting: Call | CallRecording) => (
+        calls.map((meeting: Call | CallRecording, idx:number) => (
           <MeetingCard
-            key={(meeting as Call).id}
+            // key={(meeting as Call).id}
+            key={idx}
             icon={
               type === 'ended'
                 ? '/icons/previous.svg'
@@ -76,6 +83,7 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
                   ? '/icons/upcoming.svg'
                   : '/icons/recordings.svg'
             }
+            isOngoing={type == 'upcoming' && isCallOngoing(meeting as Call)}
             title={
               (meeting as Call).state?.custom?.description ||
               (meeting as CallRecording).filename?.substring(0, 20) ||

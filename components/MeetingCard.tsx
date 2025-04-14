@@ -6,10 +6,12 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { avatarImages } from "@/constants";
 import { toast } from "sonner"; // Import sonner toast
+import { Badge } from "./ui/badge";
 
 interface MeetingCardProps {
   title: string;
   date: string;
+  isOngoing?: boolean;
   icon: string;
   isPreviousMeeting?: boolean;
   buttonIcon1?: string;
@@ -22,6 +24,7 @@ const MeetingCard = ({
   icon,
   title,
   date,
+  isOngoing,
   isPreviousMeeting,
   buttonIcon1,
   handleClick,
@@ -33,7 +36,10 @@ const MeetingCard = ({
   return (
     <section className="flex min-h-[258px] w-full flex-col justify-between rounded-[14px] bg-dark-1 px-5 py-8 xl:max-w-[568px]">
       <article className="flex flex-col gap-5">
+        <div className="flex justify-between">
         <Image src={icon} alt="upcoming" width={28} height={28} />
+        { isOngoing && <Badge className="bg-green-800">Ongoing</Badge> }
+        </div>
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
             <h1 className="text-2xl font-bold">{title}</h1>
