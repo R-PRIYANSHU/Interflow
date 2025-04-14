@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     // Revert to wider width, adjust padding for larger profile pic
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[1100px] flex justify-between items-center px-6 py-3 backdrop-blur-md bg-white/10 border border-white/10 rounded-2xl z-50 shadow-lg">
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[1100px] flex justify-between items-center px-6 py-3 backdrop-blur-md glass-bg glass-border rounded-2xl z-50 shadow-lg">
       <Link
         href="/"
         className="flex items-center gap-2 transition-transform duration-200 hover:scale-105 flex-shrink-0"
