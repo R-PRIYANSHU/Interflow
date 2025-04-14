@@ -1,4 +1,4 @@
-// import MeetingTypeList from "@/components/MeetingTypeList";
+import MeetingTypeList from "@/components/MeetingTypeList";
 import { Calendar, Clock, Link, LogIn, Play, Plus, Video } from "lucide-react";
 
 const actionCards = [
@@ -61,7 +61,7 @@ const Home = () => {
     <section className="h-full mb-12 flex flex-col gap-20">
       {/* Greeting and Time Section - Centered */}
       <header className="flex flex-col items-center text-center gap-2">
-        <h1 className="text-4xl font-semibold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent mb-2">
+        <h1 className="text-[3rem] font-semibold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent mb-2">
           {greeting}, User!
         </h1>
         <p className="text-lg text-[#a0a0a0] mb-3">
@@ -74,24 +74,24 @@ const Home = () => {
       </header>
 
       {/* Meeting Action Cards */}
-      {/* <MeetingTypeList /> */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <MeetingTypeList />
+      {/* <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {actionCards.map((card, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center bg-white/10 border border-white/10 backdrop-blur-md p-6 rounded-2xl text-center transition duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl"
+            className="flex flex-col items-center glass-bg glass-border backdrop-blur-md p-6 rounded-2xl text-center transition duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl"
           >
             <div className={`mb-5 ${card.className}`}>{card.icon}</div>
             <h2 className="text-xl font-semibold mb-1">{card.title}</h2>
             <p className="text-[#a0a0a0] mb-4">{card.description}</p>
             <button
-              className={`mt-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/10 ${card.className}`}
+              className={`mt-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl glass-bg glass-border hover:!bg-white/10 ${card.className}`}
             >
               {card.buttonIcon} {card.buttonText}
             </button>
           </div>
         ))}
-      </section>
+      </section> */}
     </section>
   );
 };
