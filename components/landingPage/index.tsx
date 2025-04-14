@@ -4,8 +4,7 @@ import { HeroSection } from "./hero";
 import Features from "./features";
 import Pricing from "./Pricing";
 import GettingStarted from "./GettingStarted";
-import { ACTIONS, TESTIMONIALS } from "./data";
-import { Testimonials } from "../ui/testimonials";
+import { ACTIONS } from "./data";
 import CallToValue from "./CallToValue";
 import Footer from "./Footer";
 

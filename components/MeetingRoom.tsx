@@ -8,12 +8,10 @@ import {
   PaginatedGridLayout,
   SpeakerLayout,
   useCallStateHooks,
-  useCall, // Added useCall to get meeting ID
 } from "@stream-io/video-react-sdk";
 // Import Stream Chat components
 import {
   Channel,
-  Chat, // Might not be needed here if provider wraps layout
   Window,
   ChannelHeader,
   MessageList,
@@ -35,7 +33,7 @@ import {
 import Loader from "./Loader";
 import EndCallButton from "./EndCallButton";
 import { cn } from "@/lib/utils";
-import { Share2, PenTool } from "lucide-react"; // Add PenTool import
+import { PenTool } from "lucide-react"; // Add PenTool import
 import { createExcalidrawSession } from "@/lib/whiteboardSession";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
@@ -198,7 +196,10 @@ const MeetingRoom = () => {
         />
         <DropdownMenu>
           <div className="flex items-center">
-            <DropdownMenuTrigger aria-label="Change layout" className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
+            <DropdownMenuTrigger
+              aria-label="Change layout"
+              className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  "
+            >
               <LayoutList size={20} className="text-white" />
             </DropdownMenuTrigger>
           </div>
@@ -218,13 +219,19 @@ const MeetingRoom = () => {
           </DropdownMenuContent>
         </DropdownMenu>
         <CallStatsButton />
-        <button aria-label="Toggle participants" onClick={() => setShowParticipants((prev) => !prev)}>
+        <button
+          aria-label="Toggle participants"
+          onClick={() => setShowParticipants((prev) => !prev)}
+        >
           <div className=" cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
             <Users size={20} className="text-white" />
           </div>
         </button>
         {/* Chat Toggle Button */}
-        <button aria-label="Toggle chat" onClick={() => setShowChat((prev) => !prev)}>
+        <button
+          aria-label="Toggle chat"
+          onClick={() => setShowChat((prev) => !prev)}
+        >
           <div className=" cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
             <MessageSquare size={20} className="text-white" />
           </div>

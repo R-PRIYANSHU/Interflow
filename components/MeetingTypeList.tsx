@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 "use client";
 
 import { useState } from "react";
@@ -74,28 +73,28 @@ const MeetingTypeList = () => {
         title="New Meeting"
         description="Start an instant meeting"
         iconBgColor="bg-orange-1" // Use custom color from globals.css
-        handleClick={() => setMeetingState('isInstantMeeting')}
+        handleClick={() => setMeetingState("isInstantMeeting")}
       />
       <HomeCard
         img="/icons/join-meeting.svg"
         title="Join Meeting"
         description="via invitation link"
         iconBgColor="bg-blue-1" // Use custom color from globals.css
-        handleClick={() => setMeetingState('isJoiningMeeting')}
+        handleClick={() => setMeetingState("isJoiningMeeting")}
       />
       <HomeCard
         img="/icons/schedule.svg"
         title="Schedule Meeting"
         description="Plan your meeting"
         iconBgColor="bg-purple-1" // Use custom color from globals.css
-        handleClick={() => setMeetingState('isScheduleMeeting')}
+        handleClick={() => setMeetingState("isScheduleMeeting")}
       />
       <HomeCard
         img="/icons/recordings.svg"
         title="View Recordings"
         description="Meeting Recordings"
         iconBgColor="bg-yellow-1" // Use custom color from globals.css
-        handleClick={() => router.push('/recordings')}
+        handleClick={() => router.push("/recordings")}
       />
 
       {!callDetail ? (
@@ -154,7 +153,7 @@ const MeetingTypeList = () => {
         title="Type the link here"
         className="text-center"
         buttonText="Join Meeting"
-        handleClick={() => router.push(values.link)}
+        handleClick={() => router.push(`/meeting/${values.link}`)}
       >
         <Input
           placeholder="Meeting link"
