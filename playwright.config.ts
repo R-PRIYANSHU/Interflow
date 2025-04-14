@@ -11,11 +11,13 @@ export default defineConfig({
     baseURL: "http://localhost:3000",
     storageState: path.join(__dirname, "playwright/.clerk/user.json"),
     trace: "on-first-retry",
-    // Add timeout
     navigationTimeout: 30000,
     actionTimeout: 15000,
   },
-  // ...rest of your config
+
+  testDir: "./tests", // Specify the test directory
+  testMatch: ["**/*.spec.ts"], // Match only .spec.ts files
+  testIgnore: ["**/__tests__/**/*"], // Ignore __tests__ directory and all its contents
 
   webServer: {
     command: "npm run start",
