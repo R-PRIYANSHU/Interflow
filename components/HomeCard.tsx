@@ -5,29 +5,36 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 interface HomeCardProps {
-  className?: string;
+  className?: string; // Keep className for potential additional styling if needed
   img: string;
   title: string;
   description: string;
   handleClick?: () => void;
+  iconBgColor?: string; // New prop for icon background color
 }
 
-const HomeCard = ({ className, img, title, description, handleClick }: HomeCardProps) => {
+const HomeCard = ({ className, img, title, description, handleClick, iconBgColor }: HomeCardProps) => {
   return (
     <section
       className={cn(
-        'bg-orange-1 px-4 py-6 flex flex-col justify-between w-full xl:max-w-[270px] min-h-[260px] rounded-[14px] cursor-pointer',
-        className
+        // Base styles: Glassmorphism, dark bg, padding, flex, size, rounded corners, cursor, transition
+        'px-4 py-6 flex flex-col justify-between w-full xl:max-w-[270px] min-h-[260px] rounded-[14px] cursor-pointer',
+        'bg-black/30 backdrop-blur-lg border border-gray-700/50', // Glassmorphism effect
+        'transition-all duration-300 ease-in-out', // Smooth transitions
+        'hover:scale-[1.03] hover:border-sky-400 hover:shadow-lg hover:shadow-sky-400/20', // Hover effects: scale, border highlight, glow
+        className // Allow overriding/adding classes
       )}
       onClick={handleClick}
     >
-      <div className="flex-center glassmorphism size-12 rounded-[10px]">
-        <Image src={img} alt="meeting" width={27} height={27} />
+      {/* Icon container: Use iconBgColor prop, ensure centering */}
+      <div className={cn('flex-center size-12 rounded-[10px]', iconBgColor)}>
+        <Image src={img} alt={title} width={27} height={27} />
       </div>
-      
+
+      {/* Text content */}
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl font-bold">{title}</h1>
-        <p className="text-lg font-normal">{description}</p>
+        <h1 className="text-2xl font-bold text-white">{title}</h1>
+        <p className="text-lg font-normal text-gray-300">{description}</p>
       </div>
     </section>
   );
