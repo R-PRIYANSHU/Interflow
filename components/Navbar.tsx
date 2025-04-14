@@ -14,8 +14,7 @@ const Navbar = () => {
 
   return (
     // Revert to wider width, adjust padding for larger profile pic
-    <nav className="flex items-center justify-between fixed z-50 top-0 left-6 right-6 mt-6 rounded-full bg-dark-1/25 backdrop-blur-lg border border-gray-700/30 px-6 py-4 lg:px-8 transition-all duration-300 ease-in-out"> {/* Removed max-w/mx-auto, added left/right, changed py-5->4 */}
-      {/* Logo Link */}
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[1100px] flex justify-between items-center px-6 py-3 backdrop-blur-md bg-white/10 border border-white/10 rounded-2xl z-50 shadow-lg">
       <Link
         href="/"
         className="flex items-center gap-2 transition-transform duration-200 hover:scale-105 flex-shrink-0"
@@ -29,13 +28,13 @@ const Navbar = () => {
           height={32}
           className="max-sm:size-8"
         />
-        <p className="text-2xl font-extrabold text-white max-sm:hidden">
+        <p className="text-xl font-semibold text-cyan-400 flex items-center gap-2">
           Interflow
         </p>
       </Link>
 
       {/* Desktop Navigation Links - Hidden on small screens */}
-      <div className="hidden md:flex items-center gap-2">
+      <div className="hidden md:flex items-center gap-6">
         {sidebarLinks.map((link) => {
           const isActive =
             pathname === link.route ||
@@ -45,23 +44,20 @@ const Navbar = () => {
             <Link
               href={link.route}
               key={link.label}
-              className={cn(
-                "flex items-center gap-2.5 rounded-full px-5 py-2.5 text-base font-medium text-gray-300 transition-all duration-300 ease-in-out transform border-2 border-transparent", // Added transparent border base
-                {
-                  // Active state: Keep similar enhanced style
-                  "bg-sky-500/50 text-white shadow-lg shadow-sky-400/60 border-sky-500/70": isActive,
-                  // New Hover state: Brighter background fill, white text, subtle border highlight
-                  "hover:bg-sky-600/60 hover:text-white hover:border-sky-400/80 hover:shadow-md hover:shadow-sky-400/30": !isActive, // Removed translate, changed bg/border/shadow
-                }
-              )}
+              className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition duration-300 ${
+                isActive
+                  ? "text-cyan-400 bg-cyan-400/10 shadow-inner shadow-cyan-400/20 font-semibold"
+                  : "text-[#a0a0a0] hover:text-[#e0e0e0] hover:bg-white/10"
+              }`}
             >
-              <Image
+              {/* <Image
                 src={link.imgURL}
                 alt={link.label}
                 width={20} // Slightly larger icon
                 height={20}
-              />
-              <span className="tracking-wide">{link.label}</span> {/* Added tracking */}
+              /> */}
+              {link.icon}
+              <span className="tracking-wide">{link.label}</span>{" "}
             </Link>
           );
         })}
