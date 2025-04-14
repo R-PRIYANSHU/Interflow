@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui";
 import Theme from "./Theme";
-import Logo from "./Logo";
+// import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import Image from "next/image";
 
@@ -25,9 +25,9 @@ export function Navbar() {
 
         <div className="flex gap-8">
           <Theme />
-          <a href="/">
+          <Link href="/">
             <Button className="rounded-full">Get Started</Button>
-          </a>
+          </Link>
         </div>
       </header>
       {/* Glass effect */}

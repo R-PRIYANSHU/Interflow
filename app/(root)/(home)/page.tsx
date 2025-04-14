@@ -61,16 +61,24 @@ const Home = () => {
     <section className="h-full mb-12 flex flex-col gap-20">
       {/* Greeting and Time Section - Centered */}
       <header className="flex flex-col items-center text-center gap-2">
-        <h1 className="text-[3rem] font-semibold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent mb-2">
+        <h1
+          data-testid="greeting"
+          className="text-[3rem] font-semibold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent mb-2"
+        >
           {greeting}, User!
         </h1>
         <p className="text-lg text-[#a0a0a0] mb-3">
           Ready to connect? Here are your quick actions:
         </p>
-        <h2 className="text-5xl font-bold text-[#e0e0e0] drop-shadow-[0_0_15px_rgba(0,188,212,0.6)]">
+        <h2
+          data-testid="currentTime"
+          className="text-5xl font-bold text-[#e0e0e0] drop-shadow-[0_0_15px_rgba(0,188,212,0.6)]"
+        >
           {time}
         </h2>
-        <p className="text-sm text-[#a0a0a0]">{date}</p>
+        <p data-testid="currentDate" className="text-sm text-[#a0a0a0]">
+          {date}
+        </p>
       </header>
 
       {/* Meeting Action Cards */}
