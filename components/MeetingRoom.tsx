@@ -137,7 +137,7 @@ const MeetingRoom = () => {
          {/* Chat Panel */}
          <div
           className={cn(
-            'fixed right-0 top-0 h-screen w-[320px] bg-dark-1 p-2 rounded-l-lg transition-transform duration-300 ease-in-out transform translate-x-full z-10', // Base styles: hidden off-screen right
+            'fixed right-0 top-0 h-screen w-1/3 bg-dark-1 p-2 rounded-l-lg transition-transform duration-300 ease-in-out transform translate-x-full z-10', // Changed w-1/4 to w-1/3
             { 'translate-x-0': showChat } // Slide in when showChat is true
           )}
         >
