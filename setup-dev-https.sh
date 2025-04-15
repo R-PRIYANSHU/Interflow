@@ -74,13 +74,13 @@ check_command ip # Checks 'ip' but doesn't exit if missing, only warns
 
 echo "🚀 Attempting to update the script itself via git..."
 # Assuming the script is in a git repo and should be updated
-git pull
-if [ $? -ne 0 ]; then
-    echo "⚠️ Warning: 'git pull' failed. Continuing with the current script version."
-    echo "   (This is okay if the script isn't managed by git or you're offline)."
-else
-    echo "   ✅ Script potentially updated."
-fi
+# git pull
+# if [ $? -ne 0 ]; then
+#     echo "⚠️ Warning: 'git pull' failed. Continuing with the current script version."
+#     echo "   (This is okay if the script isn't managed by git or you're offline)."
+# else
+#     echo "   ✅ Script potentially updated."
+# fi
 
 echo "✅ All necessary tools seem to be present!"
 echo ""
