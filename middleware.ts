@@ -25,9 +25,14 @@ export default clerkMiddleware(async (auth, req) => { // Add async here
     return NextResponse.redirect(signInUrl);
   }
 
-  // If logged in or not a protected route, allow the request to proceed
-  return NextResponse.next(); 
-}, { debug: true }); // Keep debug true for now
+    // If logged in or not a protected route, allow the request to proceed
+    return NextResponse.next();
+  },
+  {
+    authorizedParties: ["https://priyanshu-rathore.live"],
+    debug: false,
+  }
+);
 
 // Use the previous, clearer matcher config
 export const config = {
