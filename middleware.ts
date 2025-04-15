@@ -28,10 +28,10 @@ export default clerkMiddleware(async (auth, req) => { // Add async here
     // If logged in or not a protected route, allow the request to proceed
     return NextResponse.next();
   },
-  {
-    authorizedParties: ["https://priyanshu-rathore.live"],
-    debug: false,
-  }
+  // {
+  //   authorizedParties: ["https://priyanshu-rathore.live"],
+  //   debug: false,
+  // }
 );
 
 // Use the previous, clearer matcher config
