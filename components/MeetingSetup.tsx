@@ -68,7 +68,7 @@ const MeetingSetup = ({
   if (callTimeNotArrived)
     return (
       <Alert
-        title={`Your Meeting has not started yet. It is scheduled for ${callStartsAt.toLocaleString()}`}
+        title={`Your Meeting has not started yet. It is scheduled for ${callStartsAt.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`}
       />
     );
 

@@ -48,12 +48,13 @@ const Home = () => {
     greeting = "Good evening";
   }
 
-  const time = now.toLocaleTimeString("en-US", {
+  const time = now.toLocaleTimeString("en-IN", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
+    timeZone: 'Asia/Kolkata',
   }); // Ensure AM/PM
-  const date = new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(
+  const date = new Intl.DateTimeFormat("en-IN", { dateStyle: "full", timeZone: 'Asia/Kolkata' }).format(
     now
   );
 

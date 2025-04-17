@@ -90,8 +90,8 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
               'No Description'
             }
             date={
-              (meeting as Call).state?.startsAt?.toLocaleString() ||
-              (meeting as CallRecording).start_time?.toLocaleString()
+              (meeting as Call).state?.startsAt?.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) ||
+              (meeting as CallRecording).start_time && new Date((meeting as CallRecording).start_time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
             }
             isPreviousMeeting={type === 'ended'}
             link={
