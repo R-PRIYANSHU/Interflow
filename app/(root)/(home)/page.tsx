@@ -1,4 +1,5 @@
 import MeetingTypeList from "@/components/MeetingTypeList";
+import LiveClock from "@/components/LiveClock"; // Import the new component
 // import { Calendar, Clock, Link, LogIn, Play, Plus, Video } from "lucide-react";
 
 // const actionCards = [
@@ -37,26 +38,16 @@ import MeetingTypeList from "@/components/MeetingTypeList";
 // ];
 
 const Home = () => {
-  const now = new Date();
-
-  // Dynamic greeting
-  const hours = now.getHours();
+  // Dynamic greeting - Calculate based on server time initially,
+  // but the clock itself will be client-side.
+  const hours = new Date().getHours(); // Can still use server time for initial greeting
   let greeting = "Good morning";
   if (hours >= 12 && hours < 17) {
     greeting = "Good afternoon";
   } else if (hours >= 17) {
     greeting = "Good evening";
   }
-
-  const time = now.toLocaleTimeString("en-IN", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-    timeZone: 'Asia/Kolkata',
-  }); // Ensure AM/PM
-  const date = new Intl.DateTimeFormat("en-IN", { dateStyle: "full", timeZone: 'Asia/Kolkata' }).format(
-    now
-  );
+  // Removed static time/date calculation
 
   return (
     <section className="h-full mb-12 flex flex-col gap-20">
@@ -71,15 +62,8 @@ const Home = () => {
         <p className="text-lg text-[#a0a0a0] mb-3">
           Ready to connect? Here are your quick actions:
         </p>
-        <h2
-          data-testid="currentTime"
-          className="text-5xl font-bold text-[#e0e0e0] drop-shadow-[0_0_15px_rgba(0,188,212,0.6)]"
-        >
-          {time}
-        </h2>
-        <p data-testid="currentDate" className="text-sm text-[#a0a0a0]">
-          {date}
-        </p>
+        {/* Render the client-side clock component */}
+        <LiveClock />
       </header>
 
       {/* Meeting Action Cards */}
